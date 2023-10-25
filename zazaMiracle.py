@@ -43,3 +43,17 @@ def guess_again(game, letter, prev_guesses):
     prev_guesses.append(letter)
     game.guess(letter)
 
+
+@given('the game is started')
+def step_impl(game):
+    game.start()
+
+
+@when('I guess "{letter}"')
+def guess(game, letter):
+    game.guess(letter)
+
+
+@then('I should see "{message}"')
+def check_message(output, message):
+    assert message in output

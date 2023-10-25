@@ -34,3 +34,19 @@ Feature: Play Field of Miracles game
     And I have already guessed "p"
     When I guess "p" again
     Then I should see "You already guessed that letter!"
+
+  Scenario: Complete zaza and get winner
+    Given the zaza is started with "python"
+    And I guess "p","y","t","h","o","n"
+    Then I should see "Player 1 wins! The word was python."
+
+  Scenario: Handle invalid guess
+    Given the game is started
+    When I guess "&"
+    Then I should see "Invalid guess. Please enter a letter."
+
+  Scenario: Track guesses
+    Given the game is started
+    When I guess "a"
+    And I guess "b"
+    Then my guess history should be "a, b"

@@ -26,6 +26,17 @@ class TestGame(unittest.TestCase):
         hidden = game.hide_word("python")
         self.assertEqual(hidden, "******")
 
+    # Arch
+    def test_hide_word(self):
+        game = play_game()
+        hidden = game.hide_word("python")
+        self.assertEqual(hidden, "******")
+
+    def test_check_guess(self):
+        game = play_game()
+        result = game.check_guess("python", "p")
+        self.assertTrue(result)
+
     # DK
     def test_update_hidden(self):
         game = play_game()
