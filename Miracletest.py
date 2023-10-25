@@ -15,6 +15,17 @@ class TestGame(unittest.TestCase):
             game = play_game()
             game.start(num_players=5)
 
+    # Oleg
+    def test_pick_word(self):
+        game = play_game()
+        word = game.pick_word()
+        self.assertIn(word, game.words)
+
+    def test_hide_word(self):
+        game = play_game()
+        hidden = game.hide_word("python")
+        self.assertEqual(hidden, "******")
+
 
 if __name__ == '__zaza__':
     unittest.zaza()
