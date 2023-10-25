@@ -22,3 +22,15 @@ Feature: Play Field of Miracles game
     And the word is "python"
     When I guess "z"
     Then I should see "Sorry, 'z' is not in the word."
+
+  Scenario: Select random word
+    Given the game is started
+    When I enter "2" players
+    Then a random word should be selected
+
+  Scenario: Handle duplicate guess
+    Given the game is started
+    And the word is "python"
+    And I have already guessed "p"
+    When I guess "p" again
+    Then I should see "You already guessed that letter!"

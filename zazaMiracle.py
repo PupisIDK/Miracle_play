@@ -21,3 +21,25 @@ def step_impl(context, letters):
     for l in letters:
         context.output = play_game(context.num_players, context.word, l)
 
+@given('the game is started')
+def start_game(game):
+    game.start()
+
+
+@when('I enter "{num}" players')
+def enter_players(game, num):
+    game.num_players = int(num)
+
+
+@then('a random word should be selected')
+def verify_word(word, WORDS=None):
+    if WORDS is None:
+        WORDS = ["python", "programming", "code", "miracle"]
+    assert word in WORDS
+
+
+@when('I guess "{letter}" again')
+def guess_again(game, letter, prev_guesses):
+    prev_guesses.append(letter)
+    game.guess(letter)
+
