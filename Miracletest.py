@@ -26,6 +26,17 @@ class TestGame(unittest.TestCase):
         hidden = game.hide_word("python")
         self.assertEqual(hidden, "******")
 
+    # DK
+    def test_update_hidden(self):
+        game = play_game()
+        hidden = game.update_hidden("python", "y", "******")
+        self.assertEqual(hidden, "*y***")
+
+    def test_game_over(self):
+        game = play_game()
+        self.assertFalse(game.game_over("python", "****"))
+        self.assertTrue(game.game_over("python", "python"))
+
 
 if __name__ == '__zaza__':
     unittest.zaza()
