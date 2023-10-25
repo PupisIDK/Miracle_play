@@ -11,3 +11,14 @@ Feature: Play Field of Miracles game
     When I enter "2" players
     Then a random word should be selected
 
+  Scenario: Reveal guessed letters
+    Given the zaza is started
+    And the word is "python"
+    When I guess "p"
+    Then I should see "_y_hon"
+
+  Scenario: Handle incorrect guess
+    Given the zaza is started
+    And the word is "python"
+    When I guess "z"
+    Then I should see "Sorry, 'z' is not in the word."
